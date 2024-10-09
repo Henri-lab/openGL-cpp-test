@@ -1,0 +1,75 @@
+{
+    "version": "2.0.0",//vscode任务配置版本支持更强大的任务管理、变量和自定义错误匹配器
+    "tasks": [
+      {
+        "label": "build OpenGL",
+        "type": "shell",
+        "command": "/usr/bin/clang++",
+        "args": [
+          "-g",//创建对应的 .dSYM 文件 通过映射源码 来辅助调试
+          "${workspaceFolder}/main.cpp",
+          "-o",
+          "${workspaceFolder}/main",
+          "-I/opt/homebrew/opt/glew/include",  // GLEW 头文件路径; include -I
+          "-I/opt/homebrew/opt/glfw/include",  // GLFW 头文件路径
+          "-L/opt/homebrew/opt/glew/lib",  // GLEW 库文件路径; library -L
+          "-L/opt/homebrew/opt/glfw/lib",  // GLFW 库文件路径
+          "-lglfw",  // lib -l
+          "-lglew",
+          "-framework", "OpenGL"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "problemMatcher": ["$gcc"]
+      }
+    ]
+  }
+
+
+//   常用命令行参数说明
+
+// 1. 编译器选项
+
+// 	•	-g：生成调试信息，用于调试程序。
+// 	•	-O2、-O3：优化级别（-O2 为较高优化，-O3 为最高优化）。
+// 	•	-std=c++17：指定 C++ 标准版本（如 C++11、C++14、C++17）。
+// 	•	-Wall：启用所有警告。
+
+// 2. 输入与输出
+
+// 	•	-o <output_file>：指定编译输出文件的名称和路径。
+
+// 3. 头文件搜索路径
+
+// 	•	-I<path>：指定头文件的搜索路径（Include 路径），用于查找 #include 文件。
+
+// 4. 库搜索路径
+
+// 	•	-L<path>：指定库文件的搜索路径，编译器会在该目录下查找需要的静态或动态库。
+
+// 5. 链接库
+
+// 	•	-l<library>：指定要链接的库。例如 -lglfw 会链接 libglfw.a 或 libglfw.dylib。
+
+// 6. macOS 专有选项
+
+// 	•	-framework OpenGL：在 macOS 中，OpenGL 是作为框架（framework）提供的，因此用 -framework OpenGL 而不是 -lOpenGL 来链接 OpenGL。
+
+// args 数组中的动态变量
+
+// VSCode 支持使用变量插值来动态生成路径和其他参数。常见的变量包括：
+
+// 	•	${workspaceFolder}：当前工作区的根目录。
+// 	•	${file}：当前打开的文件。
+// 	•	${fileDirname}：当前文件的目录。
+// 	•	${fileBasename}：当前文件的文件名，不带路径。
+// 	•	${fileExtname}：当前文件的扩展名。
+
+// •	文件名顺序很重要：源文件应该放在选项之后，而不是选项之间。
+// •	库的链接顺序很重要：库应该按照依赖关系从被依赖到依赖的顺序排列。
+// •	输出文件名选项 -o 紧跟其后的文件名：-o 必须紧跟着目标文件名。
+// •	头文件路径和库文件路径顺序：一般情况下，-I 和 -L 的顺序不会影响，但库顺序会影响链接。
+
+// 因此，数组元素的顺序（命令行参数的顺序）在编译过程中是非常重要的，错误的顺序可能导致编译失败或者功能不如预期。在设置编译任务时，建议严格遵守这些顺序要求。
