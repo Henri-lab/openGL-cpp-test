@@ -1,32 +1,51 @@
+//-文件索引 -文件夹索引 -版本信息 -命令脚本(command+args)
 {
-    "version": "2.0.0",//vscode任务配置版本支持更强大的任务管理、变量和自定义错误匹配器
-    "tasks": [
-      {
-        "label": "build OpenGL",
-        "type": "shell",
-        "command": "/usr/bin/clang++",
-        "args": [
-          "-g",//创建对应的 .dSYM 文件 通过映射源码 来辅助调试
-          "${workspaceFolder}/main.cpp",
-          "-o",
-          "${workspaceFolder}/main",
-          "-I/opt/homebrew/opt/glew/include",  // GLEW 头文件路径; include -I
-          "-I/opt/homebrew/opt/glfw/include",  // GLFW 头文件路径
-          "-L/opt/homebrew/opt/glew/lib",  // GLEW 库文件路径; library -L
-          "-L/opt/homebrew/opt/glfw/lib",  // GLFW 库文件路径
-          "-lglfw",  // lib -l
-          "-lglew",
-          "-framework", "OpenGL"
-        ],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        },
-        "problemMatcher": ["$gcc"]
-      }
-    ]
-  }
+  "version": "2.0.0", //vscode任务配置版本支持更强大的任务管理、变量和自定义错误匹配器
+  "tasks": [
+    {
+      "label": "build OpenGL",
+      "type": "shell",
+      "command": "/usr/bin/clang++",
+      "args": [
+        "-g", //创建对应的 .dSYM 文件 通过映射源码 来辅助调试
 
+        "${workspaceFolder}/main.cpp", //源码
+        "${workspaceFolder}/src/*.cpp", //源码 src 文件夹下所有 .cpp 文件
+
+        "-o",
+        "${workspaceFolder}/main", //输出
+
+        "-std=c++17", // C++ 版本
+
+        "-I",
+        "${workspaceFolder}/include", // 包含的头文件目录
+
+        "-I",
+        "${workspaceFolder}/include/graphics", // 包含子目录 graphics 头文件
+
+        "-I",
+        "${workspaceFolder}/include/utils", // 包含子目录 utils 头文件
+
+        "-I/opt/homebrew/opt/glew/include", // GLEW 头文件路径; include -I
+        "-I/opt/homebrew/opt/glfw/include", // GLFW 头文件路径
+        "-L/opt/homebrew/opt/glew/lib", // GLEW 库文件路径; library -L
+        "-L/opt/homebrew/opt/glfw/lib", // GLFW 库文件路径
+
+        "-lglfw", // lib -l
+        "-lglew",
+
+        "-framework", //macOS专有
+        "OpenGL"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "OpenGL with multiFiles"
+    }
+  ]
+}
 
 //   常用命令行参数说明
 
