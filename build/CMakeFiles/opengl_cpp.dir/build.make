@@ -73,29 +73,29 @@ CMakeFiles/opengl_cpp.dir/src/_.cpp.o: CMakeFiles/opengl_cpp.dir/flags.make
 CMakeFiles/opengl_cpp.dir/src/_.cpp.o: /Users/henrifox/opengl_code/src/_.cpp
 CMakeFiles/opengl_cpp.dir/src/_.cpp.o: CMakeFiles/opengl_cpp.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/henrifox/opengl_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/opengl_cpp.dir/src/_.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opengl_cpp.dir/src/_.cpp.o -MF CMakeFiles/opengl_cpp.dir/src/_.cpp.o.d -o CMakeFiles/opengl_cpp.dir/src/_.cpp.o -c /Users/henrifox/opengl_code/src/_.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opengl_cpp.dir/src/_.cpp.o -MF CMakeFiles/opengl_cpp.dir/src/_.cpp.o.d -o CMakeFiles/opengl_cpp.dir/src/_.cpp.o -c /Users/henrifox/opengl_code/src/_.cpp
 
 CMakeFiles/opengl_cpp.dir/src/_.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/opengl_cpp.dir/src/_.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/henrifox/opengl_code/src/_.cpp > CMakeFiles/opengl_cpp.dir/src/_.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/henrifox/opengl_code/src/_.cpp > CMakeFiles/opengl_cpp.dir/src/_.cpp.i
 
 CMakeFiles/opengl_cpp.dir/src/_.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/opengl_cpp.dir/src/_.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/henrifox/opengl_code/src/_.cpp -o CMakeFiles/opengl_cpp.dir/src/_.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/henrifox/opengl_code/src/_.cpp -o CMakeFiles/opengl_cpp.dir/src/_.cpp.s
 
 CMakeFiles/opengl_cpp.dir/src/main.cpp.o: CMakeFiles/opengl_cpp.dir/flags.make
 CMakeFiles/opengl_cpp.dir/src/main.cpp.o: /Users/henrifox/opengl_code/src/main.cpp
 CMakeFiles/opengl_cpp.dir/src/main.cpp.o: CMakeFiles/opengl_cpp.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/henrifox/opengl_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/opengl_cpp.dir/src/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opengl_cpp.dir/src/main.cpp.o -MF CMakeFiles/opengl_cpp.dir/src/main.cpp.o.d -o CMakeFiles/opengl_cpp.dir/src/main.cpp.o -c /Users/henrifox/opengl_code/src/main.cpp
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/opengl_cpp.dir/src/main.cpp.o -MF CMakeFiles/opengl_cpp.dir/src/main.cpp.o.d -o CMakeFiles/opengl_cpp.dir/src/main.cpp.o -c /Users/henrifox/opengl_code/src/main.cpp
 
 CMakeFiles/opengl_cpp.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/opengl_cpp.dir/src/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/henrifox/opengl_code/src/main.cpp > CMakeFiles/opengl_cpp.dir/src/main.cpp.i
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/henrifox/opengl_code/src/main.cpp > CMakeFiles/opengl_cpp.dir/src/main.cpp.i
 
 CMakeFiles/opengl_cpp.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/opengl_cpp.dir/src/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/henrifox/opengl_code/src/main.cpp -o CMakeFiles/opengl_cpp.dir/src/main.cpp.s
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/henrifox/opengl_code/src/main.cpp -o CMakeFiles/opengl_cpp.dir/src/main.cpp.s
 
 # Object files for target opengl_cpp
 opengl_cpp_OBJECTS = \
@@ -105,15 +105,15 @@ opengl_cpp_OBJECTS = \
 # External object files for target opengl_cpp
 opengl_cpp_EXTERNAL_OBJECTS =
 
-/Users/henrifox/opengl_code/opengl_cpp: CMakeFiles/opengl_cpp.dir/src/_.cpp.o
-/Users/henrifox/opengl_code/opengl_cpp: CMakeFiles/opengl_cpp.dir/src/main.cpp.o
-/Users/henrifox/opengl_code/opengl_cpp: CMakeFiles/opengl_cpp.dir/build.make
-/Users/henrifox/opengl_code/opengl_cpp: CMakeFiles/opengl_cpp.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/henrifox/opengl_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable /Users/henrifox/opengl_code/opengl_cpp"
+opengl_cpp: CMakeFiles/opengl_cpp.dir/src/_.cpp.o
+opengl_cpp: CMakeFiles/opengl_cpp.dir/src/main.cpp.o
+opengl_cpp: CMakeFiles/opengl_cpp.dir/build.make
+opengl_cpp: CMakeFiles/opengl_cpp.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/henrifox/opengl_code/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable opengl_cpp"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/opengl_cpp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/opengl_cpp.dir/build: /Users/henrifox/opengl_code/opengl_cpp
+CMakeFiles/opengl_cpp.dir/build: opengl_cpp
 .PHONY : CMakeFiles/opengl_cpp.dir/build
 
 CMakeFiles/opengl_cpp.dir/clean:

@@ -1,4 +1,5 @@
 //启动cmake生成编译器的配置文件
+//有问题 暂时还是使用 cmake --build build 编译
 {
   "version": "2.0.0",
   "tasks": [
@@ -14,8 +15,11 @@
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": ["$gcc"],
-      "detail": "Configuring CMake project"
+      "problemMatcher": [],
+      "detail": "Configuring CMake project",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
     },
     {
       "label": "build CMake",
@@ -29,8 +33,11 @@
         "isDefault": false
       },
       "dependsOn": "configure CMake",
-      "problemMatcher": ["$gcc"],
-      "detail": "Building project using CMake"
+      "problemMatcher": [],
+      "detail": "Building project using CMake",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
     }
   ]
 }

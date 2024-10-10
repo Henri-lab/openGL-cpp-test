@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
-  "/Users/henrifox/opengl_code/opengl_cpp"
-  "/Users/henrifox/opengl_code/opengl_cpp.pdb"
   "CMakeFiles/opengl_cpp.dir/src/_.cpp.o"
   "CMakeFiles/opengl_cpp.dir/src/_.cpp.o.d"
   "CMakeFiles/opengl_cpp.dir/src/main.cpp.o"
   "CMakeFiles/opengl_cpp.dir/src/main.cpp.o.d"
+  "opengl_cpp"
+  "opengl_cpp.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
