@@ -15,7 +15,12 @@ link_directories(/opt/homebrew/opt/glfw/lib)
 
 # 添加可执行文件
 file(GLOB SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)  # 自动找到 src 目录下的所有 .cpp 文件
+# message(STATUS "SOURCES: ${SOURCES}")
 add_executable(opengl_cpp ${SOURCES})
+# 指定生成的可执行文件放在项目根目录
+set_target_properties(opengl_cpp PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}"
+)
 
 # 链接库
 target_link_libraries(opengl_cpp glfw glew OpenGL)
