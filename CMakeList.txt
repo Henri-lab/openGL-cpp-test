@@ -1,0 +1,30 @@
+cmake_minimum_required(VERSION 3.5.0)
+
+project(opengl_cpp VERSION 0.1.0 LANGUAGES CXX)
+
+# 添加包含路径
+include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_SOURCE_DIR}/include/graphics)
+include_directories(${CMAKE_SOURCE_DIR}/include/utils)
+include_directories(/opt/homebrew/opt/glew/include)
+include_directories(/opt/homebrew/opt/glfw/include)
+
+# 添加链接库路径
+link_directories(/opt/homebrew/opt/glew/lib)
+link_directories(/opt/homebrew/opt/glfw/lib)
+
+# 添加可执行文件
+file(GLOB SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)  # 自动找到 src 目录下的所有 .cpp 文件
+add_executable(opengl_cpp ${SOURCES})
+
+# 链接库
+target_link_libraries(opengl_cpp glfw glew OpenGL)
+
+# 启用测试
+include(CTest)
+enable_testing()
+
+# 打包设置
+set(CPACK_PROJECT_NAME ${PROJECT_NAME})
+set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
+include(CPack)
