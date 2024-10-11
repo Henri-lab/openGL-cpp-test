@@ -1,1 +1,5 @@
-
+{
+  "workbench.colorTheme": "Default High Contrast", // 设置颜色主题
+  "workbench.iconTheme": "material-icon-theme", // 设置图标主题
+  "workbench.productIconTheme": "macos-modern" // 设置产品图标主题
+}

@@ -46,8 +46,6 @@ target_link_libraries(opengl_cpp glfw glew "-framework OpenGL")
 # include(CPack)
 
 
-
-
 # --- default config ---
 # cmake_minimum_required(VERSION 3.5.0)
 # project(openGL_cpp VERSION 0.1.0 LANGUAGES C CXX)
