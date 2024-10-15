@@ -1,0 +1,3 @@
+/Users/henrifox/_code_source_/opengl_code/CMakeFiles/opengl_cpp.dir
+/Users/henrifox/_code_source_/opengl_code/CMakeFiles/edit_cache.dir
+/Users/henrifox/_code_source_/opengl_code/CMakeFiles/rebuild_cache.dir

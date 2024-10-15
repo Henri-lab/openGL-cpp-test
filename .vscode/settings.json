@@ -1,5 +1,35 @@
 {
   "workbench.colorTheme": "Default High Contrast", // 设置颜色主题
   "workbench.iconTheme": "material-icon-theme", // 设置图标主题
-  "workbench.productIconTheme": "macos-modern" // 设置产品图标主题
+  "workbench.productIconTheme": "macos-modern", // 设置产品图标主题
+  "code-runner.executorMap": {
+    //导入include文件夹所有头文件
+    // "cpp": [
+    //   "cd $dir &&",
+    //   "clang++ -std=c++17",
+    //   "-I/opt/homebrew/include",
+    //   "-I/include",
+    //   "-I/include/utils",
+    //   "-I/include/graphics",
+    //   "-L/opt/homebrew/lib",
+    //   "-lGLEW",
+    //   "-lglfw",
+    //   "-framework OpenGL",
+    //   "$fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+    // ]
+    "cpp": "cd $dir && \nclang++ -std=c++17 \n-I/opt/homebrew/include \n-I/include \n-I/include/utils \n-I/include/graphics \n-L/opt/homebrew/lib \n-lGLEW \n-lglfw \n-framework OpenGL \n$fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
+
+  },
+  // 文件扩展名与着色器阶段的关联，以及为无法自动检测的文件提供默认阶段。
+  "glsllint.additionalStageAssociations": {
+    //使用 .vert 扩展名作为顶点着色器，.frag 作为片段着色器 ...
+    ".vert": "vertex",
+    ".frag": "fragment",
+    ".geom": "geometry",
+    ".tesc": "tessellation_control",
+    ".tese": "tessellation_evaluation",
+    ".comp": "compute"
+  },
+  //无法自动检测到着色器阶段时的默认选择
+  "glsllint.fallBackStage": "fragment"
 }
