@@ -177,30 +177,6 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_cpp.dir/build.make CMakeFiles/opengl_cpp.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
-src/utils/readShaderFile.o: src/utils/readShaderFile.cpp.o
-.PHONY : src/utils/readShaderFile.o
-
-# target to build an object file
-src/utils/readShaderFile.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_cpp.dir/build.make CMakeFiles/opengl_cpp.dir/src/utils/readShaderFile.cpp.o
-.PHONY : src/utils/readShaderFile.cpp.o
-
-src/utils/readShaderFile.i: src/utils/readShaderFile.cpp.i
-.PHONY : src/utils/readShaderFile.i
-
-# target to preprocess a source file
-src/utils/readShaderFile.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_cpp.dir/build.make CMakeFiles/opengl_cpp.dir/src/utils/readShaderFile.cpp.i
-.PHONY : src/utils/readShaderFile.cpp.i
-
-src/utils/readShaderFile.s: src/utils/readShaderFile.cpp.s
-.PHONY : src/utils/readShaderFile.s
-
-# target to generate assembly for a file
-src/utils/readShaderFile.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/opengl_cpp.dir/build.make CMakeFiles/opengl_cpp.dir/src/utils/readShaderFile.cpp.s
-.PHONY : src/utils/readShaderFile.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -216,9 +192,6 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/utils/readShaderFile.o"
-	@echo "... src/utils/readShaderFile.i"
-	@echo "... src/utils/readShaderFile.s"
 .PHONY : help
 
 

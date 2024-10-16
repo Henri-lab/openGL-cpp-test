@@ -6,19 +6,18 @@
     //导入include文件夹所有头文件
     // "cpp": [
     //   "cd $dir &&",
-    //   "clang++ -std=c++17",
+    //   "clang++ -std=c++20",
     //   "-I/opt/homebrew/include",
-    //   "-I/include",
-    //   "-I/include/utils",
-    //   "-I/include/graphics",
+    //   "-I./include",
+    //   "-I./include/utils",
+    //   "-I./include/graphics",
     //   "-L/opt/homebrew/lib",
     //   "-lGLEW",
     //   "-lglfw",
     //   "-framework OpenGL",
     //   "$fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
-    // ]
-    "cpp": "cd $dir && \nclang++ -std=c++17 \n-I/opt/homebrew/include \n-I/include \n-I/include/utils \n-I/include/graphics \n-L/opt/homebrew/lib \n-lGLEW \n-lglfw \n-framework OpenGL \n$fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
-
+    // ],
+    "cpp": "cd $dir && clang++ -std=c++20 -I/opt/homebrew/include -I./include -I./include/utils -I./include/graphics -L/opt/homebrew/lib -lGLEW -lglfw -framework OpenGL $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt"
   },
   // 文件扩展名与着色器阶段的关联，以及为无法自动检测的文件提供默认阶段。
   "glsllint.additionalStageAssociations": {
@@ -31,5 +30,6 @@
     ".comp": "compute"
   },
   //无法自动检测到着色器阶段时的默认选择
-  "glsllint.fallBackStage": "fragment"
+  "glsllint.fallBackStage": "fragment",
+  "makefile.configureOnOpen": true
 }
