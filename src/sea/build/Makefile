@@ -177,6 +177,30 @@ utils/read.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/read.cpp.s
 .PHONY : utils/read.cpp.s
 
+utils/shader.o: utils/shader.cpp.o
+.PHONY : utils/shader.o
+
+# target to build an object file
+utils/shader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/shader.cpp.o
+.PHONY : utils/shader.cpp.o
+
+utils/shader.i: utils/shader.cpp.i
+.PHONY : utils/shader.i
+
+# target to preprocess a source file
+utils/shader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/shader.cpp.i
+.PHONY : utils/shader.cpp.i
+
+utils/shader.s: utils/shader.cpp.s
+.PHONY : utils/shader.s
+
+# target to generate assembly for a file
+utils/shader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/shader.cpp.s
+.PHONY : utils/shader.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +216,9 @@ help:
 	@echo "... utils/read.o"
 	@echo "... utils/read.i"
 	@echo "... utils/read.s"
+	@echo "... utils/shader.o"
+	@echo "... utils/shader.i"
+	@echo "... utils/shader.s"
 .PHONY : help
 
 
