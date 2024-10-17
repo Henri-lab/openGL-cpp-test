@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named out_web
+# Target rules for targets named out
 
 # Build rule for target.
-out_web: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 out_web
-.PHONY : out_web
+out: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 out
+.PHONY : out
 
 # fast build rule for target.
-out_web/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/build
-.PHONY : out_web/fast
+out/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/build
+.PHONY : out/fast
 
 sea.o: sea.cpp.o
 .PHONY : sea.o
 
 # target to build an object file
 sea.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/sea.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/sea.cpp.o
 .PHONY : sea.cpp.o
 
 sea.i: sea.cpp.i
@@ -142,7 +142,7 @@ sea.i: sea.cpp.i
 
 # target to preprocess a source file
 sea.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/sea.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/sea.cpp.i
 .PHONY : sea.cpp.i
 
 sea.s: sea.cpp.s
@@ -150,7 +150,7 @@ sea.s: sea.cpp.s
 
 # target to generate assembly for a file
 sea.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/sea.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/sea.cpp.s
 .PHONY : sea.cpp.s
 
 utils/read.o: utils/read.cpp.o
@@ -158,7 +158,7 @@ utils/read.o: utils/read.cpp.o
 
 # target to build an object file
 utils/read.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/utils/read.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/read.cpp.o
 .PHONY : utils/read.cpp.o
 
 utils/read.i: utils/read.cpp.i
@@ -166,7 +166,7 @@ utils/read.i: utils/read.cpp.i
 
 # target to preprocess a source file
 utils/read.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/utils/read.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/read.cpp.i
 .PHONY : utils/read.cpp.i
 
 utils/read.s: utils/read.cpp.s
@@ -174,7 +174,7 @@ utils/read.s: utils/read.cpp.s
 
 # target to generate assembly for a file
 utils/read.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/utils/read.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/read.cpp.s
 .PHONY : utils/read.cpp.s
 
 utils/shader.o: utils/shader.cpp.o
@@ -182,7 +182,7 @@ utils/shader.o: utils/shader.cpp.o
 
 # target to build an object file
 utils/shader.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/utils/shader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/shader.cpp.o
 .PHONY : utils/shader.cpp.o
 
 utils/shader.i: utils/shader.cpp.i
@@ -190,7 +190,7 @@ utils/shader.i: utils/shader.cpp.i
 
 # target to preprocess a source file
 utils/shader.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/utils/shader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/shader.cpp.i
 .PHONY : utils/shader.cpp.i
 
 utils/shader.s: utils/shader.cpp.s
@@ -198,7 +198,7 @@ utils/shader.s: utils/shader.cpp.s
 
 # target to generate assembly for a file
 utils/shader.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/out_web.dir/build.make CMakeFiles/out_web.dir/utils/shader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/out.dir/build.make CMakeFiles/out.dir/utils/shader.cpp.s
 .PHONY : utils/shader.cpp.s
 
 # Help Target
@@ -209,7 +209,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... out_web"
+	@echo "... out"
 	@echo "... sea.o"
 	@echo "... sea.i"
 	@echo "... sea.s"

@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/henrifox/_code_source_/opengl_code/src/sea/sea.cpp" "CMakeFiles/out_web.dir/sea.cpp.o" "gcc" "CMakeFiles/out_web.dir/sea.cpp.o.d"
-  "/Users/henrifox/_code_source_/opengl_code/src/sea/utils/read.cpp" "CMakeFiles/out_web.dir/utils/read.cpp.o" "gcc" "CMakeFiles/out_web.dir/utils/read.cpp.o.d"
-  "/Users/henrifox/_code_source_/opengl_code/src/sea/utils/shader.cpp" "CMakeFiles/out_web.dir/utils/shader.cpp.o" "gcc" "CMakeFiles/out_web.dir/utils/shader.cpp.o.d"
+  "/Users/henrifox/_code_source_/opengl_code/src/sea/sea.cpp" "CMakeFiles/out.dir/sea.cpp.o" "gcc" "CMakeFiles/out.dir/sea.cpp.o.d"
+  "/Users/henrifox/_code_source_/opengl_code/src/sea/utils/read.cpp" "CMakeFiles/out.dir/utils/read.cpp.o" "gcc" "CMakeFiles/out.dir/utils/read.cpp.o.d"
+  "/Users/henrifox/_code_source_/opengl_code/src/sea/utils/shader.cpp" "CMakeFiles/out.dir/utils/shader.cpp.o" "gcc" "CMakeFiles/out.dir/utils/shader.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

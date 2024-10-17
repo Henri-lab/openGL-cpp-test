@@ -1,17 +1,15 @@
 #include "shader.h"
 
 #ifdef __EMSCRIPTEN__
-#include <GLES3/gl3.h>  // For WebGL 2
+#include <GLES3/gl3.h> // For WebGL 2
 #include <emscripten/emscripten.h>
 #include <emscripten/html5.h>
 #else
-#include <GL/glew.h>    // For desktop OpenGL
+#include <GL/glew.h> // For desktop OpenGL
 #endif
 
-#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
-
 
 GLuint compileShader(GLenum type, const char *source) {
   GLuint shader = glCreateShader(type);
@@ -45,9 +43,9 @@ GLuint createShaderProgram(GLuint vertexShader, GLuint fragmentShader) {
   return program;
 }
 
-
-int renderShader(const char *vertexShaderSource,const char *fragmentShaderSource){
-     // 初始化 GLFW 库
+int renderShader(const char *vertexShaderSource,
+                 const char *fragmentShaderSource) {
+  // 初始化 GLFW 库
   if (!glfwInit()) {
     std::cerr << "无法初始化 GLFW" << std::endl;
     return -1;
@@ -132,7 +130,8 @@ int renderShader(const char *vertexShaderSource,const char *fragmentShaderSource
 }
 
 // In WebGL 2, the following functions are part of the core specification:
-// This means you can use these functions directly without needing GLEW when targeting WebAssembly. 
+// This means you can use these functions directly without needing GLEW when
+// targeting WebAssembly.
 // ---------------------
 // glGenVertexArrays
 // glBindVertexArray
@@ -144,68 +143,70 @@ GLuint VAO;
 int canvasWidth = 800, canvasHeight = 600;
 float currentTime = 0.0f;
 
-// 创建 WebGL 上下文
-EMSCRIPTEN_WEBGL_CONTEXT_HANDLE initWebGL() {
-    EmscriptenWebGLContextAttributes attrs;
-    emscripten_webgl_init_context_attributes(&attrs);
-    attrs.antialias = true;
-    attrs.majorVersion = 2; // 使用 WebGL 2
-    EMSCRIPTEN_WEBGL_CONTEXT_HANDLE ctx = emscripten_webgl_create_context("#canvas", &attrs);
-    if (ctx <= 0) {
-        std::cerr << "无法创建 WebGL 上下文！" << std::endl;
-        return 0;
-    }
-    emscripten_webgl_make_context_current(ctx);
-    return ctx;
-}
-
-// 渲染循环
-void renderLoop() {
-    // 更新时间
-    currentTime += 0.016f; // 模拟帧时间
-
-    // 清屏
-    glViewport(0, 0, canvasWidth, canvasHeight);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    // 使用着色器程序
-    glUseProgram(shaderProgram);
-
-    // 设置 uniform 变量
-    glUniform3f(glGetUniformLocation(shaderProgram, "iResolution"), (float)canvasWidth, (float)canvasHeight, 1.0f);
-    glUniform1f(glGetUniformLocation(shaderProgram, "iTime"), currentTime);
-
-    // 绘制
-    glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-
-    // 请求下一帧渲染
-    emscripten_webgl_commit_frame();
-}
-
 // 主函数
-int renderShader_web(const char *vertexShaderSource, const char *fragmentShaderSource) {
-    // 初始化 WebGL 上下文
-    EMSCRIPTEN_WEBGL_CONTEXT_HANDLE context = initWebGL();
-    if (!context) {
-        return -1;
-    }
+// int renderShader_web(const char *vertexShaderSource,const char *fragmentShaderSource) {
+//   // 创建 WebGL 上下文
+//   EMSCRIPTEN_WEBGL_CONTEXT_HANDLE initWebGL() {
+//     EmscriptenWebGLContextAttributes attrs;
+//     emscripten_webgl_init_context_attributes(&attrs);
+//     attrs.antialias = true;
+//     attrs.majorVersion = 2; // 使用 WebGL 2
+//     EMSCRIPTEN_WEBGL_CONTEXT_HANDLE ctx =
+//         emscripten_webgl_create_context("#canvas", &attrs);
+//     if (ctx <= 0) {
+//       std::cerr << "无法创建 WebGL 上下文！" << std::endl;
+//       return 0;
+//     }
+//     emscripten_webgl_make_context_current(ctx);
+//     return ctx;
+//   }
 
-    // 编译着色器并创建着色器程序
-    GLuint vertexShader = compileShader(GL_VERTEX_SHADER, vertexShaderSource);
-    GLuint fragmentShader = compileShader(GL_FRAGMENT_SHADER, fragmentShaderSource);
-    shaderProgram = createShaderProgram(vertexShader, fragmentShader);
+//   // 渲染循环
+//   void renderLoop() {
+//     // 更新时间
+//     currentTime += 0.016f; // 模拟帧时间
 
-    // 删除着色器，因为我们已经不再需要它们了
-    glDeleteShader(vertexShader);
-    glDeleteShader(fragmentShader);
+//     // 清屏
+//     glViewport(0, 0, canvasWidth, canvasHeight);
+//     glClear(GL_COLOR_BUFFER_BIT);
 
-    // 创建 VAO
-    glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
+//     // 使用着色器程序
+//     glUseProgram(shaderProgram);
 
-    // 启动渲染循环
-    emscripten_set_main_loop(renderLoop, 0, 1);
+//     // 设置 uniform 变量
+//     glUniform3f(glGetUniformLocation(shaderProgram, "iResolution"),
+//                 (float)canvasWidth, (float)canvasHeight, 1.0f);
+//     glUniform1f(glGetUniformLocation(shaderProgram, "iTime"), currentTime);
 
-    return 0;
-}
+//     // 绘制
+//     glBindVertexArray(VAO);
+//     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+
+//     // 请求下一帧渲染
+//     emscripten_webgl_commit_frame();
+//   }
+//   // 初始化 WebGL 上下文
+//   EMSCRIPTEN_WEBGL_CONTEXT_HANDLE context = initWebGL();
+//   if (!context) {
+//     return -1;
+//   }
+
+//   // 编译着色器并创建着色器程序
+//   GLuint vertexShader = compileShader(GL_VERTEX_SHADER, vertexShaderSource);
+//   GLuint fragmentShader =
+//       compileShader(GL_FRAGMENT_SHADER, fragmentShaderSource);
+//   shaderProgram = createShaderProgram(vertexShader, fragmentShader);
+
+//   // 删除着色器，因为我们已经不再需要它们了
+//   glDeleteShader(vertexShader);
+//   glDeleteShader(fragmentShader);
+
+//   // 创建 VAO
+//   glGenVertexArrays(1, &VAO);
+//   glBindVertexArray(VAO);
+
+//   // 启动渲染循环
+//   emscripten_set_main_loop(renderLoop, 0, 1);
+
+//   return 0;
+// }

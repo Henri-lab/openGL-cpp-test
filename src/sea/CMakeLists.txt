@@ -9,7 +9,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # General include directories
+include_directories(/opt/homebrew/include)
 include_directories(${CMAKE_SOURCE_DIR}/utils)
+
 
 # Conditionally handle Emscripten-specific settings
 if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
@@ -53,23 +55,20 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Emscripten")
 
 else()
     # Native macOS build configuration
-     message("Building for macOS")
+    message("Building for macOS-clang++")
     # Use native clang++ compiler
     set(CMAKE_CXX_COMPILER "/usr/bin/clang++")
     
     # macOS architecture (for Apple Silicon)
     set(CMAKE_OSX_ARCHITECTURES "arm64")
-
-    # Include directories
-    include_directories(/opt/homebrew/include)
-
+   
     # Native macOS target
     file(GLOB UTILS ${CMAKE_SOURCE_DIR}/utils/*.cpp)
     add_executable(out ./sea.cpp ${UTILS})
-
+   
     # Link against native GLFW and OpenGL for macOS
-    link_directories(/opt/homebrew/opt/glew/lib)
-    link_directories(/opt/homebrew/opt/glfw/lib)
-    target_link_libraries(out glfw glew "-framework OpenGL")
+    find_package(glfw3 REQUIRED)
+    find_package(GLEW REQUIRED)
+    target_link_libraries(out PRIVATE glfw GLEW::GLEW "-framework OpenGL")
 
 endif()
