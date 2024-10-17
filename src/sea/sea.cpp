@@ -12,5 +12,11 @@ int main() {
   const char *fragmentShaderSource =fragSource.c_str();
   const char *vertexShaderSource = vertSource.c_str();
   // render!
+  // #ifdef __EMSCRIPTEN__
+  // renderShader_web((char *)vertexShaderSource,(char *)fragmentShaderSource);
+  // #else
+  // renderShader((char *)vertexShaderSource,(char *)fragmentShaderSource);
+  // #endif
   renderShader((char *)vertexShaderSource,(char *)fragmentShaderSource);
+  return 0;
 }
