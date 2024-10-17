@@ -16,7 +16,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include/graphics)
 include_directories(${CMAKE_SOURCE_DIR}/include/utils)
 include_directories(/opt/homebrew/include)
 
-# 添加链接库路径
+# 手动添加链接库路径 自动 eg：find_package(glfw3 REQUIRED)
 link_directories(/opt/homebrew/opt/glew/lib)
 link_directories(/opt/homebrew/opt/glfw/lib)
 
