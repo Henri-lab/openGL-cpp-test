@@ -1,12 +1,17 @@
 #include "shader.h"
+
 #ifdef __EMSCRIPTEN__
 #include <GLES3/gl3.h>  // For WebGL 2
+#include <emscripten/emscripten.h>
+#include <emscripten/html5.h>
 #else
 #include <GL/glew.h>    // For desktop OpenGL
 #endif
 
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+
 
 GLuint compileShader(GLenum type, const char *source) {
   GLuint shader = glCreateShader(type);
@@ -133,73 +138,74 @@ int renderShader(const char *vertexShaderSource,const char *fragmentShaderSource
 // glBindVertexArray
 // glDeleteVertexArrays
 
-int renderShader_web(const char *vertexShaderSource, const char *fragmentShaderSource) {
-  // Initialize GLFW
-  if (!glfwInit()) {
-    std::cerr << "Unable to initialize GLFW" << std::endl;
-    return -1;
-  }
+// 全局变量
+GLuint shaderProgram;
+GLuint VAO;
+int canvasWidth = 800, canvasHeight = 600;
+float currentTime = 0.0f;
 
-  // Create a window (no need for OpenGL version hints for WebGL)
-  GLFWwindow *window = glfwCreateWindow(800, 600, "WebAssembly Window", nullptr, nullptr);
-  if (!window) {
-    std::cerr << "Unable to create GLFW window" << std::endl;
-    glfwTerminate();
-    return -1;
-  }
+// 创建 WebGL 上下文
+EMSCRIPTEN_WEBGL_CONTEXT_HANDLE initWebGL() {
+    EmscriptenWebGLContextAttributes attrs;
+    emscripten_webgl_init_context_attributes(&attrs);
+    attrs.antialias = true;
+    attrs.majorVersion = 2; // 使用 WebGL 2
+    EMSCRIPTEN_WEBGL_CONTEXT_HANDLE ctx = emscripten_webgl_create_context("#canvas", &attrs);
+    if (ctx <= 0) {
+        std::cerr << "无法创建 WebGL 上下文！" << std::endl;
+        return 0;
+    }
+    emscripten_webgl_make_context_current(ctx);
+    return ctx;
+}
 
-  // Make the current context
-  glfwMakeContextCurrent(window);
+// 渲染循环
+void renderLoop() {
+    // 更新时间
+    currentTime += 0.016f; // 模拟帧时间
 
-  // Compile shaders and create shader program
-  GLuint vertexShader = compileShader(GL_VERTEX_SHADER, vertexShaderSource);
-  GLuint fragmentShader = compileShader(GL_FRAGMENT_SHADER, fragmentShaderSource);
-  GLuint shaderProgram = createShaderProgram(vertexShader, fragmentShader);
-
-  // Delete the shaders as they are no longer needed
-  glDeleteShader(vertexShader);
-  glDeleteShader(fragmentShader);
-
-  // Create a VAO
-  GLuint VAO;
-  glGenVertexArrays(1, &VAO);
-  glBindVertexArray(VAO);
-
-  // Rendering loop
-  while (!glfwWindowShouldClose(window)) {
-    // Get the current time
-    float currentTime = glfwGetTime();
-
-    // Set the viewport
-    int width, height;
-    glfwGetFramebufferSize(window, &width, &height);
-    glViewport(0, 0, width, height);
-
-    // Clear the color buffer
+    // 清屏
+    glViewport(0, 0, canvasWidth, canvasHeight);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // Use the shader program
+    // 使用着色器程序
     glUseProgram(shaderProgram);
 
-    // Set uniform variables
-    glUniform3f(glGetUniformLocation(shaderProgram, "iResolution"), (float)width, (float)height, 1.0f);
+    // 设置 uniform 变量
+    glUniform3f(glGetUniformLocation(shaderProgram, "iResolution"), (float)canvasWidth, (float)canvasHeight, 1.0f);
     glUniform1f(glGetUniformLocation(shaderProgram, "iTime"), currentTime);
 
-    // Draw the fullscreen quad
+    // 绘制
+    glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
-    // Swap buffers and poll events
-    glfwSwapBuffers(window);
-    glfwPollEvents();
-  }
+    // 请求下一帧渲染
+    emscripten_webgl_commit_frame();
+}
 
-  // Clean up resources
-  glDeleteProgram(shaderProgram);
-  
-  glDeleteVertexArrays(1, &VAO);
-  
+// 主函数
+int renderShader_web(const char *vertexShaderSource, const char *fragmentShaderSource) {
+    // 初始化 WebGL 上下文
+    EMSCRIPTEN_WEBGL_CONTEXT_HANDLE context = initWebGL();
+    if (!context) {
+        return -1;
+    }
 
-  glfwDestroyWindow(window);
-  glfwTerminate();
-  return 0;
+    // 编译着色器并创建着色器程序
+    GLuint vertexShader = compileShader(GL_VERTEX_SHADER, vertexShaderSource);
+    GLuint fragmentShader = compileShader(GL_FRAGMENT_SHADER, fragmentShaderSource);
+    shaderProgram = createShaderProgram(vertexShader, fragmentShader);
+
+    // 删除着色器，因为我们已经不再需要它们了
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
+
+    // 创建 VAO
+    glGenVertexArrays(1, &VAO);
+    glBindVertexArray(VAO);
+
+    // 启动渲染循环
+    emscripten_set_main_loop(renderLoop, 0, 1);
+
+    return 0;
 }
